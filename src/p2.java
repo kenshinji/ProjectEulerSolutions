@@ -1,17 +1,16 @@
-public class EvenFibNumbers {
+public class p2 {
 
 	public static void main(String[] args) {
-		System.out.println("The sum of the even-valued terms is "
-				+ getSum(4000000));
+		System.out.println(new p2().run());
 	}
 
-	static int getSum(int limited) {
+	public String run() {
 		int sum = 0;
 		int first = 1;
 		int second = 2;
 		int next = first + second;
 		sum = sum + second;
-		while (next <= limited) {
+		while (next <= 4000000) {
 			if (next % 2 == 0)
 				sum += next;
 			first = second;
@@ -19,7 +18,6 @@ public class EvenFibNumbers {
 			next = first + second;
 
 		}
-		return sum;
+		return Integer.toString(sum);
 	}
-
 }
