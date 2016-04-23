@@ -8,42 +8,18 @@ public class p3 implements EulerSolution {
     }
 
     public String run() {
-
-        //return Integer.toString(nextPrime(15));
         Long target = 600851475143l;
         Long start = 2l, max = 2l;
-        while (start < target) {
-            if (target % start != 0) {
-                start = nextPrime(start) == start ? start + 1 : nextPrime(start);
-            }
-            if (target % start == 0) {
+        while (start <= target) {
+
+            while (target % start == 0) {
                 target = target / start;
-                max = start;
             }
+            if (target == 1) {
+                return String.valueOf(start);
+            }
+            start++;
         }
-
-        return String.valueOf(max);
-
+        return "Not found";
     }
-
-
-    private Long nextPrime(Long n) {
-        Long next_prime = n;
-        while (true) {
-            Long next_prime_sqrt = (new Double(Math.sqrt(next_prime))).longValue();
-            boolean is_odd = true;
-            for (Long i = 2l; i < next_prime_sqrt + 1; i++) {
-                if (next_prime % i == 0) {
-                    is_odd = false;
-                    break;
-                }
-            }
-            if (is_odd) {
-                return next_prime;
-            }
-            next_prime++;
-        }
-    }
-
-
 }
